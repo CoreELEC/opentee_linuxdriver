@@ -362,6 +362,7 @@ void optee_log_exit(struct tee_device *tee_dev)
 	if (log_workqueue) {
 		cancel_delayed_work_sync(&log_work);
 		destroy_workqueue(log_workqueue);
+		log_workqueue = NULL;
 	}
 
 	n = sizeof(log_class_attrs) / sizeof(struct class_attribute);
